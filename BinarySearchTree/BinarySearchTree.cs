@@ -123,6 +123,67 @@ namespace BinarySearchTree
 		}
 
 		//FIND TREE HEIGHT
+		public int Height()
+		{
+			return Height(root);
+		}
 
+		public int Height(Node node)
+		{
+			if(node == null)
+			{
+				return 0;
+			}
+			int heightLeft = Height(node.leftChild);
+			int heightRight = Height(node.rightChild);
+
+			if(heightLeft > heightRight)
+			{
+				return 1 + heightLeft;
+			}
+			else
+			{
+				return 1 + heightRight;
+			}
+		}
+
+		
+
+		public void Add(int data)
+		{
+			Node newNode = new Node(data);
+			newNode.data = data;
+			if(root == null)
+			{
+				root = newNode;
+			}
+			else
+			{
+				Node current = root;
+				Node parent;
+				while(true)
+				{
+					parent = current;
+					if(data < current.data)
+					{
+						current = current.leftChild;
+						if(current == null)
+						{
+							parent.leftChild = newNode;
+							break;
+						}
+					}
+					else
+					{
+						current = current.rightChild;
+						if(current == null)
+						{
+							parent.rightChild = newNode;
+							break;
+						}
+					}
+				}
+			}
+		}
 	}
 }
