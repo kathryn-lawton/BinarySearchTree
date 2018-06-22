@@ -30,17 +30,16 @@ namespace BinarySearchTree
 			}
 
 			Display(node.rightChild, level + 1);
-			Console.WriteLine();
 
 			for(int i = 0; i < level; i++)
 			{
-				Console.WriteLine("		");
+				Console.Write("		");
 			}
 			Console.WriteLine(node.data);
 
 			Display(node.leftChild, level + 1);
 		}
-	
+
 		//PREORDER==========================
 		public void PreOrder()
 		{
@@ -50,7 +49,7 @@ namespace BinarySearchTree
 
 		public void PreOrder(Node node)
 		{
-			if(node == null)
+			if (node == null)
 			{
 				return;
 			}
@@ -65,10 +64,10 @@ namespace BinarySearchTree
 			InOrder(root);
 			Console.WriteLine();
 		}
-		
+
 		public void InOrder(Node node)
 		{
-			if(node == null)
+			if (node == null)
 			{
 				return;
 			}
@@ -85,7 +84,7 @@ namespace BinarySearchTree
 
 		public void PostOrder(Node node)
 		{
-			if(node == null)
+			if (node == null)
 			{
 				return;
 			}
@@ -97,7 +96,7 @@ namespace BinarySearchTree
 		//LEVEL ORDERING
 		public void LevelOrder()
 		{
-			if(root == null)
+			if (root == null)
 			{
 				Console.WriteLine("Tree is empty");
 				return;
@@ -106,15 +105,15 @@ namespace BinarySearchTree
 			queue.Enqueue(root);
 
 			Node node;
-			while(queue.Count != 0)
+			while (queue.Count != 0)
 			{
 				node = queue.Dequeue();
 				Console.WriteLine(node.data + "	");
-				if(node.leftChild != null)
+				if (node.leftChild != null)
 				{
 					queue.Enqueue(node.leftChild);
 				}
-				if(node.rightChild != null)
+				if (node.rightChild != null)
 				{
 					queue.Enqueue(node.rightChild);
 				}
@@ -130,29 +129,26 @@ namespace BinarySearchTree
 
 		public int Height(Node node)
 		{
-			if(node == null)
+			if (node == null)
 			{
 				return 0;
 			}
 			int heightLeft = Height(node.leftChild);
 			int heightRight = Height(node.rightChild);
 
-			if(heightLeft > heightRight)
+			if (heightLeft > heightRight)
 			{
 				return 1 + heightLeft;
 			}
 			else
 			{
 				return 1 + heightRight;
-			}
+			};
 		}
-
-		
-
+		//ADD=================
 		public void Add(int data)
 		{
 			Node newNode = new Node(data);
-			newNode.data = data;
 			if(root == null)
 			{
 				root = newNode;
@@ -160,30 +156,59 @@ namespace BinarySearchTree
 			else
 			{
 				Node current = root;
-				Node parent;
 				while(true)
 				{
-					parent = current;
 					if(data < current.data)
 					{
-						current = current.leftChild;
-						if(current == null)
+						if(current.leftChild == null)
 						{
-							parent.leftChild = newNode;
+							current.leftChild = newNode;
 							break;
+						}
+						else
+						{
+							current = current.leftChild;
 						}
 					}
 					else
 					{
-						current = current.rightChild;
-						if(current == null)
+						if(current.rightChild == null)
 						{
-							parent.rightChild = newNode;
+							current.rightChild = newNode;
 							break;
+						}
+						else
+						{
+							current = current.rightChild;
 						}
 					}
 				}
 			}
 		}
+
+		//public void CreateTree()
+		//{
+		//	root = new Node();
+		//	root.leftChild = new Node('Q');
+		//	root.rightChild = new Node('R');
+		//	root.leftChild.leftChild = new Node('A');
+		//	root.leftChild.rightChild = new Node('B');
+		//	root.rightChild.leftChild = new Node('X');
+		//}
+		
+		
+		////SEARCH=====================
+		//public int Search(int data )
+		//{
+		//	if(root == null)
+		//	{
+		//		return 0;
+		//	}
+
+		//	}
+		//}
+
+
+
 	}
 }
