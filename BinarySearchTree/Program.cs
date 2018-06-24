@@ -33,8 +33,15 @@ namespace BinarySearchTree
 			tree.LevelOrder();
 			Console.WriteLine();
 
-			Console.ReadLine();
+			int input = 15;
+			Console.WriteLine($"Searching tree for {input}...");
+			BinarySearchTree.Search(input, tree.root);
 
+			input = 30;
+			Console.WriteLine($"Searching tree for {input}...");
+			BinarySearchTree.Search(input, tree.root);
+
+			Console.ReadLine();
 
 			
 		}

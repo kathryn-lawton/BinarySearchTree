@@ -186,29 +186,33 @@ namespace BinarySearchTree
 			}
 		}
 
-		//public void CreateTree()
-		//{
-		//	root = new Node();
-		//	root.leftChild = new Node('Q');
-		//	root.rightChild = new Node('R');
-		//	root.leftChild.leftChild = new Node('A');
-		//	root.leftChild.rightChild = new Node('B');
-		//	root.rightChild.leftChild = new Node('X');
-		//}
-		
-		
-		////SEARCH=====================
-		//public int Search(int data )
-		//{
-		//	if(root == null)
-		//	{
-		//		return 0;
-		//	}
+		public void GetUserInput()
+		{
+			Console.WriteLine("Please enter the number you would like to find: ");
+			int input = Convert.ToInt32(Console.ReadLine());
+		}
+		//SEARCH=====================
+		public static void Search(int input, Node node)
+		{
+			
+			if (node == null)
+			{
+				Console.WriteLine($"Node {input} not found.");
+			}
+			else if (node.data == input)
+			{
+				Console.WriteLine($"Node {input} is found." );
+			}
+			else if (input < node.data)
+			{
+				Search(input, node.leftChild);
+			}
+			else
+			{
+				Search(input, node.rightChild);
+			}
 
-		//	}
-		//}
-
-
-
+		}
 	}
 }
+
