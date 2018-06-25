@@ -93,7 +93,7 @@ namespace BinarySearchTree
 			Console.WriteLine(node.data + " ");
 		}
 
-		//LEVEL ORDERING
+		//LEVEL ORDERING+==============
 		public void LevelOrder()
 		{
 			if (root == null)
@@ -186,11 +186,6 @@ namespace BinarySearchTree
 			}
 		}
 
-		public void GetUserInput()
-		{
-			Console.WriteLine("Please enter the number you would like to find: ");
-			int input = Convert.ToInt32(Console.ReadLine());
-		}
 		//SEARCH=====================
 		public static void Search(int input, Node node)
 		{
